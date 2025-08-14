@@ -1,9 +1,9 @@
 pub mod item;
+pub mod r#move;
+pub mod poke_type;
 pub mod pokemon;
 pub mod pokemon_species;
-pub mod poke_type;
 
 pub use item::*;
+pub use r#move::*;
 pub use pokemon::*;
-pub use pokemon_species::*;
-pub use poke_type::*;

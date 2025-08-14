@@ -1,3 +1,4 @@
+use super::r#move::NamedAPIResource;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -43,12 +44,6 @@ pub struct PokemonType {
     pub slot: u32,
     #[serde(rename = "type")]
     pub type_info: NamedAPIResource,
-}
-
-#[derive(Debug, Serialize, Deserialize, Clone)]
-pub struct NamedAPIResource {
-    pub name: String,
-    pub url: String,
 }
 
 #[cfg(test)]
