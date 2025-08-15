@@ -6,6 +6,7 @@ pub mod pokemon_species;
 pub mod ability;
 pub mod status;
 pub mod active_pokemon;
+pub mod stats;
 
 pub use item::*;
 pub use r#move::*;
@@ -15,3 +16,4 @@ pub use pokemon_species::*;
 pub use ability::*;
 pub use status::*;
 pub use active_pokemon::*;
+pub use stats::*;

@@ -1,6 +1,7 @@
 use crate::domain::model::ability::Ability;
 use crate::domain::model::pokemon::Pokemon;
 use crate::domain::model::status::StatusCondition;
+use crate::domain::model::stats::StatName;
 
 #[derive(Clone, Debug)]
 pub struct ActivePokemon {
@@ -32,16 +33,16 @@ pub struct ActivePokemon {
 
 impl ActivePokemon {
     pub fn new(pokemon: &Pokemon, ability: &Ability) -> Self {
-        let get_stat = |name: &str| -> u32 {
+        let get_stat = |stat_name: StatName| -> u32 {
             pokemon
                 .stats
                 .iter()
-                .find(|s| s.stat.name == name)
+                .find(|s| s.stat == stat_name)
                 .map(|s| s.base_stat)
-                .unwrap_or_else(|| panic!("'{}' stat not found for {}", name, pokemon.name))
+                .unwrap_or_else(|| panic!("'{:?}' stat not found for {}", stat_name, pokemon.name))
         };
 
-        let max_hp = get_stat("hp");
+        let max_hp = get_stat(StatName::Hp);
 
         Self {
             name: pokemon.name.clone(),
@@ -49,11 +50,11 @@ impl ActivePokemon {
             max_hp,
             current_hp: max_hp,
             status: None,
-            attack: get_stat("attack"),
-            defense: get_stat("defense"),
-            special_attack: get_stat("special-attack"),
-            special_defense: get_stat("special-defense"),
-            speed: get_stat("speed"),
+            attack: get_stat(StatName::Attack),
+            defense: get_stat(StatName::Defense),
+            special_attack: get_stat(StatName::SpecialAttack),
+            special_defense: get_stat(StatName::SpecialDefense),
+            speed: get_stat(StatName::Speed),
             attack_rank: 0,
             defense_rank: 0,
             special_attack_rank: 0,
@@ -81,7 +82,7 @@ impl ActivePokemon {
 mod tests {
     use super::*;
     use crate::domain::model::pokemon::{Pokemon, PokemonStat};
-    use crate::domain::model::r#move::NamedAPIResource;
+    use crate::domain::model::ability::Ability;
 
     fn create_test_pokemon() -> Pokemon {
         Pokemon {
@@ -93,32 +94,32 @@ mod tests {
             species: None,
             stats: vec![
                 PokemonStat {
-                    stat: NamedAPIResource { name: "hp".to_string(), url: "".to_string() },
+                    stat: StatName::Hp,
                     effort: 0,
                     base_stat: 100,
                 },
                 PokemonStat {
-                    stat: NamedAPIResource { name: "attack".to_string(), url: "".to_string() },
+                    stat: StatName::Attack,
                     effort: 0,
                     base_stat: 50,
                 },
                 PokemonStat {
-                    stat: NamedAPIResource { name: "defense".to_string(), url: "".to_string() },
+                    stat: StatName::Defense,
                     effort: 0,
                     base_stat: 40,
                 },
                 PokemonStat {
-                    stat: NamedAPIResource { name: "special-attack".to_string(), url: "".to_string() },
+                    stat: StatName::SpecialAttack,
                     effort: 0,
                     base_stat: 60,
                 },
                 PokemonStat {
-                    stat: NamedAPIResource { name: "special-defense".to_string(), url: "".to_string() },
+                    stat: StatName::SpecialDefense,
                     effort: 0,
                     base_stat: 55,
                 },
                 PokemonStat {
-                    stat: NamedAPIResource { name: "speed".to_string(), url: "".to_string() },
+                    stat: StatName::Speed,
                     effort: 0,
                     base_stat: 70,
                 },
