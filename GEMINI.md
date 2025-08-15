@@ -34,9 +34,19 @@
 │   ├── domain.rs        # ドメイン層のトップレベルモジュール
 │   ├── domain/          # ドメイン層: ビジネスの核となるルールとロジック
 │   │   ├── model/       # エンティティ、値オブジェクト (例: Pokemon, Move, Battle)
-│   │   │   └── item.rs
+│   │   │   ├── ability.rs
+│   │   │   ├── item.rs
+│   │   │   ├── move.rs
+│   │   │   ├── pokemon.rs
+│   │   │   ├── pokemon_species.rs
+│   │   │   └── poke_type.rs
 │   │   ├── repository/  # データ永続化のインターフェース(トレイト)定義
-│   │   │   └── item_repository.rs
+│   │   │   ├── ability_repository.rs
+│   │   │   ├── item_repository.rs
+│   │   │   ├── move_repository.rs
+│   │   │   ├── pokemon_repository.rs
+│   │   │   ├── pokemon_species_repository.rs
+│   │   │   └── type_repository.rs
 │   │   └── service/     # ドメインサービス（一モデルに載せるには範囲が大きい、状態を持たないロジックを定義）
 │   │
 │   ├── application.rs   # アプリケーション層のトップレベルモジュール
@@ -50,9 +60,12 @@
 │   ├── infrastructure/  # インフラストラクチャ層: 外部システムとの連携
 │   │   └── persistence/ # データ永続化の実装 (ファイル、DBなど)
 │   │       ├── json_loader.rs
-│   │       ├── file_pokemon_repository.rs
+│   │       ├── file_ability_repository.rs
+│   │       ├── file_item_repository.rs
 │   │       ├── file_move_repository.rs
-│   │       └── file_item_repository.rs
+│   │       ├── file_pokemon_repository.rs
+│   │       ├── file_pokemon_species_repository.rs
+│   │       └── file_type_repository.rs
 │   │
 │   ├── interfaces.rs    # インターフェース層のトップレベルモジュール
 │   └── interfaces/      # インターフェース層: ユーザーや外部システムとのI/F

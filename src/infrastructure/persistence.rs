@@ -4,3 +4,4 @@ pub mod file_pokemon_repository;
 pub mod file_pokemon_species_repository;
 pub mod file_type_repository;
 pub mod json_loader;
+pub mod file_ability_repository;

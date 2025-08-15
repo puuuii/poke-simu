@@ -4,6 +4,7 @@ mod infrastructure;
 mod interfaces;
 
 use crate::application::usecase::load_static_data::LoadStaticDataUsecase;
+use crate::infrastructure::persistence::file_ability_repository::FileAbilityRepository;
 use crate::infrastructure::persistence::file_item_repository::FileItemRepository;
 use crate::infrastructure::persistence::file_move_repository::FileMoveRepository;
 use crate::infrastructure::persistence::file_pokemon_repository::FilePokemonRepository;
@@ -23,6 +24,7 @@ fn main() {
     let move_repository = FileMoveRepository;
     let pokemon_species_repository = FilePokemonSpeciesRepository;
     let type_repository = FileTypeRepository;
+    let ability_repository = FileAbilityRepository;
 
     // 2. ユースケースにリポジトリを注入（DI: Dependency Injection）
     let load_static_data_use_case = LoadStaticDataUsecase::new(
@@ -31,6 +33,7 @@ fn main() {
         move_repository,
         pokemon_species_repository,
         type_repository,
+        ability_repository,
     );
 
     // 3. ユースケースの実行
@@ -81,6 +84,15 @@ fn main() {
             "タイプサンプル出力: ID: {}, 名前: {}",
             sample_type.id,
             sample_type.name
+        );
+    }
+
+    info!("ロードされた特性の数: {}", loaded_data.abilities.len());
+    if let Some(sample_ability) = loaded_data.abilities.first() {
+        info!(
+            "特性サンプル出力: ID: {}, 名前: {}",
+            sample_ability.id,
+            sample_ability.name
         );
     }
 

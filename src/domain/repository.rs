@@ -3,3 +3,4 @@ pub mod move_repository;
 pub mod pokemon_repository;
 pub mod pokemon_species_repository;
 pub mod type_repository;
+pub mod ability_repository;

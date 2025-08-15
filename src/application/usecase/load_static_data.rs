@@ -1,32 +1,36 @@
 use crate::application::dto::loaded_static_data::LoadedStaticData;
+use crate::domain::repository::ability_repository::AbilityRepository;
 use crate::domain::repository::item_repository::ItemRepository;
 use crate::domain::repository::move_repository::MoveRepository;
 use crate::domain::repository::pokemon_repository::PokemonRepository;
 use crate::domain::repository::pokemon_species_repository::PokemonSpeciesRepository;
 use crate::domain::repository::type_repository::TypeRepository;
 
-pub struct LoadStaticDataUsecase<I, P, M, S, T>
+pub struct LoadStaticDataUsecase<I, P, M, S, T, A>
 where
     I: ItemRepository,
     P: PokemonRepository,
     M: MoveRepository,
     S: PokemonSpeciesRepository,
     T: TypeRepository,
+    A: AbilityRepository,
 {
     item_repository: I,
     pokemon_repository: P,
     move_repository: M,
     pokemon_species_repository: S,
     type_repository: T,
+    ability_repository: A,
 }
 
-impl<I, P, M, S, T> LoadStaticDataUsecase<I, P, M, S, T>
+impl<I, P, M, S, T, A> LoadStaticDataUsecase<I, P, M, S, T, A>
 where
     I: ItemRepository,
     P: PokemonRepository,
     M: MoveRepository,
     S: PokemonSpeciesRepository,
     T: TypeRepository,
+    A: AbilityRepository,
 {
     pub fn new(
         item_repository: I,
@@ -34,6 +38,7 @@ where
         move_repository: M,
         pokemon_species_repository: S,
         type_repository: T,
+        ability_repository: A,
     ) -> Self {
         Self {
             item_repository,
@@ -41,6 +46,7 @@ where
             move_repository,
             pokemon_species_repository,
             type_repository,
+            ability_repository,
         }
     }
 
@@ -50,6 +56,7 @@ where
         let moves = self.move_repository.find_all_moves();
         let pokemon_species = self.pokemon_species_repository.find_all_species();
         let types = self.type_repository.find_all_types();
+        let abilities = self.ability_repository.find_all_abilities();
 
         LoadedStaticData {
             items,
@@ -57,6 +64,7 @@ where
             moves,
             pokemon_species,
             types,
+            abilities,
         }
     }
 }
@@ -64,6 +72,7 @@ where
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::infrastructure::persistence::file_ability_repository::FileAbilityRepository;
     use crate::infrastructure::persistence::file_item_repository::FileItemRepository;
     use crate::infrastructure::persistence::file_move_repository::FileMoveRepository;
     use crate::infrastructure::persistence::file_pokemon_repository::FilePokemonRepository;
@@ -77,6 +86,7 @@ mod tests {
         let move_repository = FileMoveRepository;
         let pokemon_species_repository = FilePokemonSpeciesRepository;
         let type_repository = FileTypeRepository;
+        let ability_repository = FileAbilityRepository;
 
         let usecase = LoadStaticDataUsecase::new(
             item_repository,
@@ -84,6 +94,7 @@ mod tests {
             move_repository,
             pokemon_species_repository,
             type_repository,
+            ability_repository,
         );
 
         let loaded_data = usecase.execute();
@@ -93,5 +104,6 @@ mod tests {
         assert!(!loaded_data.moves.is_empty());
         assert!(!loaded_data.pokemon_species.is_empty());
         assert!(!loaded_data.types.is_empty());
+        assert!(!loaded_data.abilities.is_empty());
     }
 }
