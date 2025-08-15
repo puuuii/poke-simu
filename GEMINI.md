@@ -35,11 +35,13 @@
 │   ├── domain/          # ドメイン層: ビジネスの核となるルールとロジック
 │   │   ├── model/       # エンティティ、値オブジェクト (例: Pokemon, Move, Battle)
 │   │   │   ├── ability.rs
+│   │   │   ├── active_pokemon.rs
 │   │   │   ├── item.rs
 │   │   │   ├── move.rs
 │   │   │   ├── pokemon.rs
 │   │   │   ├── pokemon_species.rs
-│   │   │   └── poke_type.rs
+│   │   │   ├── poke_type.rs
+│   │   │   └── status.rs
 │   │   ├── repository/  # データ永続化のインターフェース(トレイト)定義
 │   │   │   ├── ability_repository.rs
 │   │   │   ├── item_repository.rs

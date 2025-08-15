@@ -4,6 +4,8 @@ pub mod poke_type;
 pub mod pokemon;
 pub mod pokemon_species;
 pub mod ability;
+pub mod status;
+pub mod active_pokemon;
 
 pub use item::*;
 pub use r#move::*;
@@ -11,3 +13,5 @@ pub use poke_type::*;
 pub use pokemon::*;
 pub use pokemon_species::*;
 pub use ability::*;
+pub use status::*;
+pub use active_pokemon::*;

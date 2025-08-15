@@ -1,7 +1,7 @@
 use super::r#move::NamedAPIResource;
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Pokemon {
     pub id: u32,
     pub name: String,
@@ -13,33 +13,33 @@ pub struct Pokemon {
     pub types: Vec<PokemonType>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct PokemonAbility {
     pub ability: NamedAPIResource,
     pub is_hidden: bool,
     pub slot: u32,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct PokemonForm {
     pub name: String,
     pub url: String,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct PokemonMove {
     #[serde(rename = "move")]
     pub r#move: NamedAPIResource,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct PokemonStat {
     pub stat: NamedAPIResource,
     pub effort: u32,
     pub base_stat: u32,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct PokemonType {
     pub slot: u32,
     #[serde(rename = "type")]
