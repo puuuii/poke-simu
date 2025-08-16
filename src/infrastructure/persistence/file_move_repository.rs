@@ -14,10 +14,9 @@ impl MoveRepository for FileMoveRepository {
         let mut moves: Vec<Move> = load_json_from_directory("data/move/", "moves");
 
         // スカーレット・バイオレット向けにフィルタリング
-        for mov in &mut moves {
-            mov.flavor_text_entries.retain(|entry| {
+        for move_data in &mut moves {
+            move_data.flavor_text_entries.retain(|entry| {
                 entry.version_group.name == SCARLET_VIOLET_VERSION_GROUP
-                    && SUPPORTED_LANGUAGES.contains(&entry.language.name.as_str())
             });
         }
 

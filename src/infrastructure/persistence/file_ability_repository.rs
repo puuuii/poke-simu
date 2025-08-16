@@ -12,15 +12,14 @@ pub struct FileAbilityRepository;
 impl AbilityRepository for FileAbilityRepository {
     fn find_all_abilities(&self) -> Vec<Ability> {
         let mut abilities: Vec<Ability> = load_json_from_directory("data/ability/", "abilities");
-
-        // スカーレット・バイオレット向けにフィルタリング
+        
+        // Filter for Scarlet-Violet version group only
         for ability in &mut abilities {
             ability.flavor_text_entries.retain(|entry| {
                 entry.version_group.name == SCARLET_VIOLET_VERSION_GROUP
-                    && SUPPORTED_LANGUAGES.contains(&entry.language.name.as_str())
             });
         }
-
+        
         abilities
     }
 }

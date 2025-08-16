@@ -3,7 +3,6 @@ use crate::domain::repository::pokemon_species_repository::PokemonSpeciesReposit
 use crate::infrastructure::persistence::json_loader::load_json_from_directory;
 
 const SCARLET_VIOLET_VERSIONS: [&str; 2] = ["scarlet", "violet"];
-const SUPPORTED_LANGUAGES: [&str; 2] = ["ja", "en"];
 
 pub struct FilePokemonSpeciesRepository;
 
@@ -15,7 +14,6 @@ impl PokemonSpeciesRepository for FilePokemonSpeciesRepository {
         for species in &mut species_list {
             species.flavor_text_entries.retain(|entry| {
                 SCARLET_VIOLET_VERSIONS.contains(&entry.version.name.as_str())
-                    && SUPPORTED_LANGUAGES.contains(&entry.language.name.as_str())
             });
         }
         
