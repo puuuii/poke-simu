@@ -1,9 +1,9 @@
 use super::r#move::NamedAPIResource;
 use super::stats::StatName;
 use serde::{
+    Deserialize, Serialize,
     de::{self, Deserializer},
     ser::{SerializeStruct, Serializer},
-    Deserialize, Serialize,
 };
 
 #[derive(Debug, Deserialize, Serialize, Clone)]

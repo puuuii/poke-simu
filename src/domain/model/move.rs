@@ -4,7 +4,9 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct NamedAPIResource {
     pub name: String,
-    pub url: String,
+    #[serde(default)]
+    #[allow(dead_code)]
+    url: Option<String>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

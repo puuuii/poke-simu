@@ -32,7 +32,9 @@ pub struct Name {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct NamedAPIResource {
     pub name: String,
-    pub url: String,
+    #[serde(default)]
+    #[allow(dead_code)]
+    url: Option<String>,
 }
 
 #[cfg(test)]

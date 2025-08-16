@@ -43,8 +43,7 @@ fn main() {
     if let Some(sample_item) = loaded_data.items.first() {
         info!(
             "アイテムサンプル出力: ID: {}, 名前: {}",
-            sample_item.id,
-            sample_item.name
+            sample_item.id, sample_item.name
         );
     }
 
@@ -52,8 +51,7 @@ fn main() {
     if let Some(sample_pokemon) = loaded_data.pokemons.first() {
         info!(
             "ポケモンサンプル出力: ID: {}, 名前: {}",
-            sample_pokemon.id,
-            sample_pokemon.name
+            sample_pokemon.id, sample_pokemon.name
         );
     }
 
@@ -61,8 +59,7 @@ fn main() {
     if let Some(sample_move) = loaded_data.moves.first() {
         info!(
             "技サンプル出力: ID: {}, 名前: {}",
-            sample_move.id,
-            sample_move.name
+            sample_move.id, sample_move.name
         );
     }
 
@@ -73,8 +70,7 @@ fn main() {
     if let Some(sample_species) = loaded_data.pokemon_species.first() {
         info!(
             "ポケモン種類サンプル出力: ID: {}, 名前: {}",
-            sample_species.id,
-            sample_species.name
+            sample_species.id, sample_species.name
         );
     }
 
@@ -82,8 +78,7 @@ fn main() {
     if let Some(sample_type) = loaded_data.types.first() {
         info!(
             "タイプサンプル出力: ID: {}, 名前: {}",
-            sample_type.id,
-            sample_type.name
+            sample_type.id, sample_type.name
         );
     }
 
@@ -91,8 +86,7 @@ fn main() {
     if let Some(sample_ability) = loaded_data.abilities.first() {
         info!(
             "特性サンプル出力: ID: {}, 名前: {}",
-            sample_ability.id,
-            sample_ability.name
+            sample_ability.id, sample_ability.name
         );
     }
 

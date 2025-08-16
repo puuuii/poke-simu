@@ -1,4 +1,7 @@
-use crate::domain::model::{Ability, Item, Move, Pokemon, pokemon_species::PokemonSpecies, poke_type::PokeType};
+use crate::domain::model::{
+    ability::Ability, item::Item, r#move::Move, poke_type::PokeType, pokemon::Pokemon,
+    pokemon_species::PokemonSpecies,
+};
 
 pub struct LoadedStaticData {
     pub items: Vec<Item>,

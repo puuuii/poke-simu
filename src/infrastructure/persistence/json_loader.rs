@@ -64,12 +64,23 @@ mod tests {
         let mut file3 = File::create(test_dir.join("test3.txt")).unwrap();
         file3.write_all(b"some text").unwrap();
 
-        let mut result: Vec<TestData> = load_json_from_directory(test_dir.to_str().unwrap(), "test data");
+        let mut result: Vec<TestData> =
+            load_json_from_directory(test_dir.to_str().unwrap(), "test data");
         result.sort();
 
         assert_eq!(result.len(), 2);
-        assert_eq!(result[0], TestData { name: "test1".to_string() });
-        assert_eq!(result[1], TestData { name: "test2".to_string() });
+        assert_eq!(
+            result[0],
+            TestData {
+                name: "test1".to_string()
+            }
+        );
+        assert_eq!(
+            result[1],
+            TestData {
+                name: "test2".to_string()
+            }
+        );
 
         fs::remove_dir_all(test_dir).unwrap();
     }
@@ -77,7 +88,8 @@ mod tests {
     #[test]
     fn test_load_from_non_existent_directory() {
         setup();
-        let result: Vec<TestData> = load_json_from_directory("non_existent_dir_for_test", "test data");
+        let result: Vec<TestData> =
+            load_json_from_directory("non_existent_dir_for_test", "test data");
         assert!(result.is_empty());
     }
 }

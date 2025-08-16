@@ -1,6 +1,11 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct NamedAPIResource {
+    pub name: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PokemonSpecies {
     pub id: u32,
     pub name: String,
@@ -14,18 +19,13 @@ pub struct PokemonSpecies {
 pub struct FlavorTextEntry {
     pub flavor_text: String,
     pub language: NamedAPIResource,
+    pub version: NamedAPIResource,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Name {
     pub language: NamedAPIResource,
     pub name: String,
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct NamedAPIResource {
-    pub name: String,
-    pub url: String,
 }
 
 #[cfg(test)]

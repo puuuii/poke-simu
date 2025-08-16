@@ -1,4 +1,4 @@
-use crate::domain::model::Pokemon;
+use crate::domain::model::pokemon::Pokemon;
 use crate::domain::repository::pokemon_repository::PokemonRepository;
 use crate::infrastructure::persistence::json_loader::load_json_from_directory;
 

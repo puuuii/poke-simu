@@ -1,7 +1,7 @@
 use crate::domain::model::ability::Ability;
 use crate::domain::model::pokemon::Pokemon;
-use crate::domain::model::status::StatusCondition;
 use crate::domain::model::stats::StatName;
+use crate::domain::model::status::StatusCondition;
 
 #[derive(Clone, Debug)]
 pub struct ActivePokemon {
@@ -81,8 +81,8 @@ impl ActivePokemon {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::domain::model::pokemon::{Pokemon, PokemonStat};
     use crate::domain::model::ability::Ability;
+    use crate::domain::model::pokemon::{Pokemon, PokemonStat};
 
     fn create_test_pokemon() -> Pokemon {
         Pokemon {

@@ -1,4 +1,4 @@
-use crate::domain::model::Item;
+use crate::domain::model::item::Item;
 use crate::domain::repository::item_repository::ItemRepository;
 use crate::infrastructure::persistence::json_loader::load_json_from_directory;
 
